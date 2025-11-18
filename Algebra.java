@@ -25,50 +25,113 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		int x = x1 + x2;
+		
+		for (int i = 0; i < x2; i++) {
+			x1++;
+		}
+		
+		int x = x1;
+		
 		return x;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		int x = x1 - x2;
+		
+		for (int i = 0; i < x2; i++) {
+			x1--;
+		}
+		
+		int x = x1;
+
 		return x;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		int x = x1 * x2;
+		
+		int x = 0;
+		
+		for(int i = 0; i < x2; i++) {
+			for(int j = 0; j < x1; j++) {	
+					x++;
+			}
+		}
+		
 		return x;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		int result = 1;
-		for (int a = 0; a < n; a++) {
-			result = result * x;
+		
+		int y;
+
+		if (n == 0) {
+			y =1; //anything to the power 0 is 1
+		} else {
+			y = 1; 
+
+			for(int i = 0; i < n; i++) {	//repeat multi n times
+				int temp = 0; //temp variable to store
+
+				for(int j = 0; j < x; j++) {
+					int k = 0;
+					while (k < y) {
+						temp++;
+						k++;
+					}
+				}
+
+				y = temp;
+
+			}
 		}
-		int y = result;
+
 		return y;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		int x = x1 / x2;
+		
+		int x = 0;
+
+		while (x1 >= x2) {
+			
+			int temp = x2;
+
+			while (temp > 0) {
+				x1--;
+				temp--;
+			}
+
+			x++;
+
+		}
+
 		return x;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		int x = x1 % x2;
-		return x;
+		
+		while (x1 >= x2) {
+
+			int temp = x2;
+
+			while (temp > 0) {
+				x1--;
+				temp--;
+			}
+
+		}
+
+
+		return x1;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		int i = 0;
-		while (i * i <= x) {
-			i++;
-		}
-		return i;
+		
+		return 0;
 	}	  	  
 }
