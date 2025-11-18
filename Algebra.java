@@ -61,50 +61,51 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		
-		int x = 0;
-		
-		if (x2 >= 0) {
-			for(int i = 0; i < x2; i++) {
-				for(int j = 0; j < x1; j++) {	
-					x++;
-			}
-		}
-		} else {
-			for(int j = 0; j != x2; j--) {
-				for(int i = 0; i < x1; i++) {
-					x--;
+		int temp = 0;
+
+		if (x1 >= 0 && x2 >= 0) {
+				for(int i = 0; i < x2; i++) {
+				for(int j = 0; j < x1; j++) {
+					temp++;
 				}
-			} 
-		}
-		
-		return x;
+			}
+		} else if (x1 >= 0 && x2 < 0) {
+				for(int i = 0; i != x2; i--) {
+				for(int j = 0; j < x1; j++) {
+					temp--;
+				}
+			}
+		} else if (x1 < 0 && x2 >= 0) {
+				for(int i = 0; i < x2; i++) {
+				for(int j = 0; j != x1; j--) {
+				temp--;
+				}
+			}
+		} else if (x1 < 0 && x2 < 0) {
+				for(int i = 0; i != x2; i--) {
+				for(int j = 0; j != x1; j--) {
+				temp++;
+				}
+			}
+		}	
+
+		return temp;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		
-		int y;
-
+		int y = 0;
+		
 		if (n == 0) {
-			y =1; //anything to the power 0 is 1
+			y = 1;
 		} else {
-			y = 1; 
-
-			for(int i = 0; i < n; i++) {	//repeat multi n times
-				int temp = 0; //temp variable to store
-
-				for(int j = 0; j < x; j++) {
-					int k = 0;
-					while (k < y) {
-						temp++;
-						k++;
-					}
-				}
-
-				y = temp;
-
+			y = x;
+			for(int i = 1; i <= n; i++) {
+				times(y, i);
 			}
 		}
+		
 
 		return y;
 	}
