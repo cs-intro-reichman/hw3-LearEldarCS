@@ -63,10 +63,18 @@ public class Algebra {
 		
 		int x = 0;
 		
-		for(int i = 0; i < x2; i++) {
-			for(int j = 0; j < x1; j++) {	
+		if (x2 >= 0) {
+			for(int i = 0; i < x2; i++) {
+				for(int j = 0; j < x1; j++) {	
 					x++;
 			}
+		}
+		} else {
+			for(int j = 0; j != x2; j--) {
+				for(int i = 0; i < x1; i++) {
+					x--;
+				}
+			} 
 		}
 		
 		return x;
