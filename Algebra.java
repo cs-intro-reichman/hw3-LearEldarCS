@@ -114,11 +114,37 @@ public class Algebra {
 	public static int div(int x1, int x2) {
 		
 		int x = 0;
-		
-		while (x1 > 0) {
-			x1 = minus(x1, x2);
-			x++;
+
+		if (x1 > 0 && x2 > 0) { //when X1 postive, x2 postive
+			while (x1 > 0) {
+				x1 = minus(x1, x2);
+				x++;
+			}
+		} else if (x1 > 0 && x2 < 0) { //when x1 postive, x2 negative
+			x2 = minus(0, x2);
+				while (x1 >= x2) {
+					x1 = minus(x1, x2);
+					x++;
+				}
+			x = minus(0, x);
+		} else if (x1 < 0 && x2 > 0) { //when x1 negative, x2 positive
+			x1 = minus(0, x1);
+				while (x1 >= x2) {
+					x1 = minus(x1, x2);
+					x++;
+				}
+			x = minus(0, x);
+		} else if (x1 < 0 && x2 < 0) { //when x1 negative, x2 negative
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+				while (x1 >= x2) {
+					x1 = minus(x1, x2);
+					x++;
+				}
+		} else if (x1 == 0) {
+			x = 0;
 		}
+
 
 		return x;
 	}
