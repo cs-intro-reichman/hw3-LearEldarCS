@@ -52,22 +52,20 @@ public class LoanCalc {
 		
 		double payment = loan / n;
 
-		double deciRate = rate / 100.0;
-		
-		iterationCounter = 0;
+    	iterationCounter = 0;
 
-		double increment = epsilon;
+   		double increment = epsilon;
 
-		double finalBalance = endBalance(loan, deciRate, n, payment);
-		 
-		while (finalBalance > epsilon) {
-			
+    	double finalBalance = endBalance(loan, rate, n, payment);
+     
+    	while (finalBalance > epsilon) {
+        
 			payment += increment;
 
-			finalBalance = endBalance(loan, deciRate, n, payment);
-			
-			iterationCounter++;
-		}
+        	finalBalance = endBalance(loan, rate, n, payment);
+
+        	iterationCounter++;
+    }
 
 		return payment;
     }
