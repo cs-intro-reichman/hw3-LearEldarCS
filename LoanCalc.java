@@ -28,8 +28,19 @@ public class LoanCalc {
 	// Computes the ending balance of a loan, given the loan amount, the periodical
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	private static double endBalance(double loan, double rate, int n, double payment) {	
-		// Replace the following statement with your code
-		return 0;
+		
+		double currentBalance = loan;
+		
+		double deciRate = rate / 100.0;
+		
+		int i = 0;
+
+		while (i < n) {
+			currentBalance = (currentBalance - payment) * (1 + deciRate);
+			i++;
+		}
+
+		return currentBalance;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
@@ -38,8 +49,27 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
-		// Replace the following statement with your code
-		return 0;
+		
+		double payment = loan / n;
+
+		double deciRate = rate / 100.0;
+		
+		iterationCounter = 0;
+
+		double increment = epsilon;
+
+		double finalBalance = endBalance(loan, deciRate, n, payment);
+		 
+		while (finalBalance > epsilon) {
+			
+			payment += increment;
+
+			finalBalance = endBalance(loan, deciRate, n, payment);
+			
+			iterationCounter++;
+		}
+
+		return payment;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
@@ -48,7 +78,28 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-        // Replace the following statement with your code
-		return 0;
+		
+		double High = loan, Low = 0;
+
+		double deciRate = rate / 100.0;
+		
+		iterationCounter = 0;
+
+		while ((High - Low) > epsilon) {
+			
+			double g = (High + Low) / 2.0;
+
+			double gMiddle = endBalance(loan, deciRate, n, g);
+
+			if (gMiddle > 0) {
+				Low = g;
+			} else {
+				High = g;
+			}
+			
+			iterationCounter++;
+
+		}
+		return High;
     }
 }
