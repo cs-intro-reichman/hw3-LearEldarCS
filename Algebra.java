@@ -100,9 +100,9 @@ public class Algebra {
 		if (n == 0) {
 			y = 1;
 		} else {
-			y = x;
-			for(int i = 1; i <= n; i++) {
-				times(y, i);
+			y = 1;
+			for(int i = 0; i < n; i++) {
+				y = times(y, x);
 			}
 		}
 		
@@ -114,18 +114,10 @@ public class Algebra {
 	public static int div(int x1, int x2) {
 		
 		int x = 0;
-
-		while (x1 >= x2) {
-			
-			int temp = x2;
-
-			while (temp > 0) {
-				x1--;
-				temp--;
-			}
-
+		
+		while (x1 > 0) {
+			x1 = minus(x1, x2);
 			x++;
-
 		}
 
 		return x;
