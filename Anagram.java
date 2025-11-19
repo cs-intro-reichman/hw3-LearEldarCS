@@ -94,10 +94,10 @@ public class Anagram {
 
 		while (str.length() > 0) {
 			int r = (int) (Math.random() * str.length());
-			str = str.substring(0, r) + str.substring(r + 1);
 			anagram += r;
-		}
-		
+			str = str.substring(0, r) + str.substring(r + 1);
+		}	
+
 
 		return anagram;
 	}
