@@ -91,14 +91,23 @@ public class Anagram {
 	public static String randomAnagram(String str) {
 		str = preProcess(str);
 		String anagram = "";
+		boolean pass = true;
 
-		while (str.length() > 0) {
-			int r = (int) (Math.random() * str.length());
-			anagram += r;
-			str = str.substring(0, r) + str.substring(r + 1);
-		}	
+		for(int i = 0; i < 10; i++) {
+			while (str.length()>0) {
+				int r = (int) (Math.random() * str.length());
+				anagram += r;
+				str = str.substring(0,r) + str.substring(r+1);
+			}
+			
+			if (pass && isAnagram(str, anagram)) {
+				return anagram;
+			}
 
+		}
 
-		return anagram;
+		String notAnagram = "Not an anagram";
+
+		return notAnagram;
 	}
 }
